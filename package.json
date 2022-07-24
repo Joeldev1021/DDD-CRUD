@@ -1,0 +1,40 @@
+{
+	"name": "ddd-crud",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"test": "ava ./test/**/*.test.js",
+		"start": "node src/index.js",
+		"dev": "nodemon src/index.js",
+		"docker:up": "docker-compose -p dddcrud up -d",
+		"docker:down": "docker-compose -p dddcrud down",
+		"docker:down-volumes": "docker-compose -p dddcrud down -v"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"bcrypt": "^5.0.1",
+		"cors": "^2.8.5",
+		"dotenv": "^16.0.1",
+		"express": "^4.18.1",
+		"mongoose": "^6.4.4",
+		"uuid-random": "^1.3.2"
+	},
+	"devDependencies": {
+		"@ngneat/falso": "^6.0.3",
+		"ava": "4.2.0",
+		"eslint": "^8.20.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-config-standard": "^17.0.0",
+		"eslint-plugin-import": "^2.26.0",
+		"eslint-plugin-n": "^15.2.4",
+		"eslint-plugin-promise": "^6.0.0",
+		"mongodb-memory-server": "^8.7.2",
+		"node-fetch": "^3.2.9",
+		"nodemon": "^2.0.19",
+		"prettier": "^2.7.1"
+	}
+}
