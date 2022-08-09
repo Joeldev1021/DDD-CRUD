@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import { config as dotenvConfig } from "dotenv";
 import mongoose from "mongoose";
-import { UserRouter } from "./infrastruture/routes/user.routes.js";
+import { IndexRoutes } from "./infrastruture/routes/index.routes.js";
 import { errorMiddleware } from "./infrastruture/middlewares/error.middleware.js";
 dotenvConfig();
 
@@ -13,7 +13,7 @@ export const bootstrap = async () => {
 	app.use(express.urlencoded({ extended: false }));
 	app.use(express.json());
 	app.use(cors());
-	app.use(UserRouter);
+	app.use(IndexRoutes);
 	// erro middleware
 	app.use(errorMiddleware);
 	await mongoose
