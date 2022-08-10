@@ -5,10 +5,12 @@ import { UserLoginController } from "./infrastruture/controllers/user.login.cont
 import { UserRegisterController } from "./infrastruture/controllers/user.register.controller.js";
 import { UserRepository } from "./infrastruture/repositories/user.repository.js";
 /* task import  */
-import { TaskFindByIdUseCase } from "./application/use-cases/tasks/task-findById.usecase.js";
 import { TaskController } from "./infrastruture/controllers/task.controller.js";
 import { TaskRepository } from "./infrastruture/repositories/task.repository.js";
+/// use case
 import { TaskCreateUseCase } from "./application/use-cases/tasks/task-create.usecase.js";
+import { TaskDeleteUseCase } from "./application/use-cases/tasks/task-delete.usecase.js";
+import { TaskFindByIdUseCase } from "./application/use-cases/tasks/task-findById.usecase.js";
 
 const container = awilix.createContainer({
 	injectionMode: awilix.InjectionMode.PROXY,
@@ -37,6 +39,7 @@ container.register({
 container.register({
 	taskCreateUseCase: awilix.asClass(TaskCreateUseCase).singleton(),
 	taskFindByIdUseCase: awilix.asClass(TaskFindByIdUseCase).singleton(),
+	taskDeleteUseCase: awilix.asClass(TaskDeleteUseCase).singleton(),
 });
 
 // task controller

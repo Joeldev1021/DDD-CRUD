@@ -8,4 +8,4 @@ const schema = new mongoose.Schema({
 	_user: { type: String, ref: "User" },
 });
 
-export const UserSchema = mongoose.model("Task", schema);
+export const TaskSchema = mongoose.model("Task", schema);

@@ -1,8 +1,8 @@
 import { InvalidTaskFormatException } from "../errors/invalid.task.format.exception.js";
+import { UuidVO } from "../value-object/uuid.vo.js";
 import { TitleTaskVO } from "../value-object/task-value-object/title.vo.js";
 import { DescripTaskVO } from "../value-object/task-value-object/description.vo.js";
 import { StatusTaskVO } from "../value-object/task-value-object/status.vo.js";
-import { UuidVO } from "../value-object/uuid.vo";
 
 export class TaskModel {
 	/**
