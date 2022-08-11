@@ -9,7 +9,7 @@ export class DescripTaskVO extends ValueObject {
 	}
 
 	assertIsValid(value) {
-		if (value.length > 10) {
+		if (value.length < 10) {
 			throw new VOFormatException(DescripTaskVO.name, value);
 		}
 	}

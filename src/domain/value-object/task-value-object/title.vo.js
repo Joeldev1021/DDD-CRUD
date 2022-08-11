@@ -9,7 +9,7 @@ export class TitleTaskVO extends ValueObject {
 	}
 
 	assertIsValid(value) {
-		if (value.length > 5) {
+		if (value.length < 5) {
 			throw new VOFormatException(TitleTaskVO.name, value);
 		}
 	}

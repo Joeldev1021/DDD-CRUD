@@ -9,7 +9,7 @@ export class StatusTaskVO extends ValueObject {
 	}
 
 	assertIsValid(value) {
-		if (typeof value === "boolean") {
+		if (typeof value !== "boolean") {
 			throw new VOFormatException(StatusTaskVO.name, value);
 		}
 	}
