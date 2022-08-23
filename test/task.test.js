@@ -1,5 +1,4 @@
 import test from "ava";
-/* import { generateRandomUser } from "./utils/generateRandomUser.js"; */
 import { expectStatusCode } from "./utils/genericExpects.js";
 import { setupTests } from "./utils/setupTests.js";
 import { fetchGetTask, fetchTask } from "./utils/tasks/apiTask.js";
@@ -8,6 +7,7 @@ setupTests(test);
 
 /* const USER_RANDOM_1 = generateRandomUser();
 const USER_RANDOM_2 = generateRandomUser(); */
+
 const TASK_RANDOM_1 = {
 	id: "7c51a7b8-be68-4d89-bad2-e77ebde08329",
 	title: "Testing title",
@@ -33,11 +33,12 @@ test.serial("task created failed - Duplicated ID", async (t) => {
 		...TASK_RANDOM_2,
 		id: TASK_RANDOM_1.id,
 	};
+
 	const response = await fetchTask(t, task);
 
 	expectStatusCode(t, 409, response);
 });
-/* 
+
 test("Task created failed - Invalid ID format", async (t) => {
 	const task = {
 		...TASK_RANDOM_1,
@@ -103,15 +104,34 @@ test("task created failed - Unnecesary fields", async (t) => {
 	expectStatusCode(t, 400, response);
 });
 
-test.serial("task GET by ID - succesfully", async (t) => {
+test.serial("task find by ID - succesfully", async (t) => {
 	const response = await fetchGetTask(t, TASK_RANDOM_1.id);
 
 	expectStatusCode(t, 200, response);
 });
- */
 
-test.serial("task DELETE by ID - succesfully", async (t) => {
-	const response = await fetchGetTask(t, TASK_RANDOM_1.id, "POST");
+test.serial("Task find by Id failed - Invalid ID format", async (t) => {
+	const task = {
+		...TASK_RANDOM_1,
+		id: "invalid-uuid",
+	};
+
+	const response = await fetchGetTask(t, task.id);
+
+	expectStatusCode(t, 400, response);
+});
+
+test.serial("task update by Id - succesfully", async (t) => {
+	const task = {
+		...TASK_RANDOM_1,
+		title: "my title update",
+	};
+	const response = await fetchTask(t, task, "PUT", task.id);
+	expectStatusCode(t, 200, response);
+});
+
+test.serial("task delete by ID - succesfully", async (t) => {
+	const response = await fetchGetTask(t, TASK_RANDOM_1.id, "DELETE");
 
 	expectStatusCode(t, 200, response);
 });

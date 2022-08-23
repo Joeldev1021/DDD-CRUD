@@ -5,7 +5,10 @@ import { UserLoginController } from "./infrastruture/controllers/user.login.cont
 import { UserRegisterController } from "./infrastruture/controllers/user.register.controller.js";
 import { UserRepository } from "./infrastruture/repositories/user.repository.js";
 /* task import  */
-import { TaskController } from "./infrastruture/controllers/task.controller.js";
+import { TaskCreateController } from "./infrastruture/controllers/tasks/task.create.controller.js";
+import { TaskDeleteController } from "./infrastruture/controllers/tasks/task.delete.controller.js";
+import { TaskFindByIdController } from "./infrastruture/controllers/tasks/task.find.id.controller.js";
+// task repository
 import { TaskRepository } from "./infrastruture/repositories/task.repository.js";
 /// use case
 import { TaskCreateUseCase } from "./application/use-cases/tasks/task-create.usecase.js";
@@ -33,7 +36,7 @@ container.register({
 	userRepository: awilix.asClass(UserRepository).singleton(),
 });
 
-// ===============task =====================
+// ===============task ===================== //
 
 // task use-case
 container.register({
@@ -44,7 +47,9 @@ container.register({
 
 // task controller
 container.register({
-	taskController: awilix.asClass(TaskController).singleton(),
+	taskCreateController: awilix.asClass(TaskCreateController).singleton(),
+	taskFindByIdController: awilix.asClass(TaskFindByIdController).singleton(),
+	taskDeleteController: awilix.asClass(TaskDeleteController).singleton(),
 });
 
 // task respository

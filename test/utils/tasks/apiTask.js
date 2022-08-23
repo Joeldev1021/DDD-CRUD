@@ -1,9 +1,11 @@
 import fetch from "node-fetch";
 const endpoint = `http://localhost:${process.env.PORT}/task`;
 
-export const fetchTask = async (t, task, method = "POST") => {
+export const fetchTask = async (t, task, method = "POST", id = "") => {
+	console.log(method);
+	console.log(id);
 	try {
-		const response = await fetch(endpoint, {
+		const response = await fetch(`${endpoint}/${id}`, {
 			method,
 			headers: {
 				"Content-Type": "application/json",
@@ -17,12 +19,9 @@ export const fetchTask = async (t, task, method = "POST") => {
 	}
 };
 
-export const fetchGetTask = async (t, taskId, method = "GET") => {
-	console.log(method);
+export const fetchGetTask = async (t, id = "", method = "GET") => {
 	try {
-		const response = await fetch(`${endpoint}/${taskId}`, {
-			method,
-		});
+		const response = await fetch(`${endpoint}/${id}`);
 		return response;
 	} catch (err) {
 		t.fail(err);

@@ -11,20 +11,6 @@ const endpoint = `http://localhost:${process.env.PORT}/register`;
 const USER_RANDOM_1 = generateRandomUser();
 const USER_RANDOM_2 = generateRandomUser();
 
-/* const USER_RANDOM_1 = {
-	id: "7c51a7b8-be68-4d89-bad2-e77ebde08329",
-	username: "Testing",
-	email: "test@test.com",
-	password: "test1234",
-};
-
-const USER_RANDOM_2 = {
-	id: "5d9516b7-cec9-49da-b565-699cf6d3969e",
-	username: "Testing alt",
-	email: "testalt@test.com",
-	password: "test1234",
-}; */
-
 const fetchRegister = async (t, user) => {
 	try {
 		const response = await fetch(endpoint, {
