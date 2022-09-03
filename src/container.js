@@ -8,12 +8,14 @@ import { UserRepository } from "./infrastruture/repositories/user.repository.js"
 import { TaskCreateController } from "./infrastruture/controllers/tasks/task.create.controller.js";
 import { TaskDeleteController } from "./infrastruture/controllers/tasks/task.delete.controller.js";
 import { TaskFindByIdController } from "./infrastruture/controllers/tasks/task.find.id.controller.js";
+import { TaskUpdateController } from "./infrastruture/controllers/tasks/task.update.controller.js";
 // task repository
 import { TaskRepository } from "./infrastruture/repositories/task.repository.js";
 /// use case
 import { TaskCreateUseCase } from "./application/use-cases/tasks/task-create.usecase.js";
 import { TaskDeleteUseCase } from "./application/use-cases/tasks/task-delete.usecase.js";
 import { TaskFindByIdUseCase } from "./application/use-cases/tasks/task-findById.usecase.js";
+import { TaskUpdateUseCase } from "./application/use-cases/tasks/task.update.usecase.js";
 
 const container = awilix.createContainer({
 	injectionMode: awilix.InjectionMode.PROXY,
@@ -43,6 +45,7 @@ container.register({
 	taskCreateUseCase: awilix.asClass(TaskCreateUseCase).singleton(),
 	taskFindByIdUseCase: awilix.asClass(TaskFindByIdUseCase).singleton(),
 	taskDeleteUseCase: awilix.asClass(TaskDeleteUseCase).singleton(),
+	taskUpdateUseCase: awilix.asClass(TaskUpdateUseCase).singleton(),
 });
 
 // task controller
@@ -50,6 +53,7 @@ container.register({
 	taskCreateController: awilix.asClass(TaskCreateController).singleton(),
 	taskFindByIdController: awilix.asClass(TaskFindByIdController).singleton(),
 	taskDeleteController: awilix.asClass(TaskDeleteController).singleton(),
+	taskUpdateController: awilix.asClass(TaskUpdateController).singleton(),
 });
 
 // task respository

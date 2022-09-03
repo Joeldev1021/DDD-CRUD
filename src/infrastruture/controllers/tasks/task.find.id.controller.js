@@ -6,8 +6,8 @@ export class TaskFindByIdController {
 	async execute(req, res, next) {
 		const { id } = req.params;
 		try {
-			await this.taskFindByIdUseCase.execute(id);
-			res.status(200).send();
+			const taskFound = await this.taskFindByIdUseCase.execute(id);
+			res.status(200).send(taskFound);
 		} catch (error) {
 			next(error);
 		}
