@@ -7,8 +7,8 @@ const taskCreateController = container.resolve("taskCreateController");
 const taskFindByIdController = container.resolve("taskFindByIdController");
 const taskDeleteController = container.resolve("taskDeleteController");
 const taskUpdateController = container.resolve("taskUpdateController");
-// userRegisterController.execute.bind(userRegisterController)
-/* router.get("/"); */
+
+/*  routes  */
 router.post("/", taskCreateController.execute.bind(taskCreateController));
 router.get("/:id", taskFindByIdController.execute.bind(taskFindByIdController));
 router.put("/:id", taskUpdateController.execute.bind(taskUpdateController));

@@ -23,7 +23,6 @@ export class TaskUpdateUseCase {
 		if (!existedTask) {
 			throw new TaskIdNotFoundUseException();
 		}
-		const task = await this.taskRepository.update(updateTask);
-		return taskId;
+		await this.taskRepository.update(updateTask);
 	}
 }

@@ -6,6 +6,7 @@
 	"type": "module",
 	"scripts": {
 		"test": "ava ./test/**/*.test.js",
+		"test-task": "ava ./test/task.test.js",
 		"start": "node src/index.js",
 		"dev": "nodemon src/index.js",
 		"docker:up": "docker-compose -p dddcrud up -d",

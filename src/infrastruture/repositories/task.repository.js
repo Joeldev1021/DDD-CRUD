@@ -1,4 +1,3 @@
-import { compareSync } from "bcrypt";
 import { TaskModel } from "../../domain/models/task.model.js";
 import { DescripTaskVO } from "../../domain/value-object/task-value-object/description.vo.js";
 import { StatusTaskVO } from "../../domain/value-object/task-value-object/status.vo.js";
@@ -59,6 +58,11 @@ export class TaskRepository {
 		return this.toDomain(taskDeleted);
 	}
 
+	async find() {
+		const tasks = await TaskSchema.find();
+		if (!tasks) return null;
+	}
+
 	/**
 	 * Create a new task in the database.
 	 * @param domianTask - The user object that is passed in from the controller.
@@ -67,5 +71,10 @@ export class TaskRepository {
 		const persistanceTask = this.toPersistance(domainTask);
 		const task = new TaskSchema(persistanceTask);
 		await task.save();
+	}
+
+	async update(domainTask) {
+		const persistanceTask = this.toPersistance(domainTask);
+		await TaskSchema.findByIdAndUpdate(persistanceTask._id, persistanceTask);
 	}
 }
