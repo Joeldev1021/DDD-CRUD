@@ -61,6 +61,8 @@ export class TaskRepository {
 	async find() {
 		const tasks = await TaskSchema.find();
 		if (!tasks) return null;
+
+		return tasks.map(task => this.toDomain(task));
 	}
 
 	/**

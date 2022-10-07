@@ -121,6 +121,8 @@ test.serial("Task find by Id failed - Invalid ID format", async (t) => {
 	expectStatusCode(t, 400, response);
 });
 
+
+
 test.serial("task update by Id - succesfully", async (t) => {
 	const task = {
 		...TASK_RANDOM_1,
@@ -135,3 +137,18 @@ test.serial("task delete by ID - succesfully", async (t) => {
 
 	expectStatusCode(t, 200, response);
 });
+
+test.serial("Task-2 created succesfully", async (t) => {
+	const response = await fetchTask(t, TASK_RANDOM_2);
+
+	expectStatusCode(t, 200, response);
+});
+
+test.serial("task Get all tasks succesfully", async (t) => {
+	const response = await fetchGetTask(t, "", "GET");
+	expectStatusCode(t, 200, response);
+});
+
+
+
+

@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"type": "module",
 	"scripts": {
-		"test": "ava ./test/**/*.test.js",
+		"test-user": "ava ./test/user-register.test.js",
 		"test-task": "ava ./test/task.test.js",
 		"start": "node src/index.js",
 		"dev": "nodemon src/index.js",
@@ -28,7 +28,7 @@
 	},
 	"devDependencies": {
 		"@ngneat/falso": "^6.0.3",
-		"ava": "4.2.0",
+		"ava": "^4.3.3",
 		"eslint": "^8.20.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-config-standard": "^17.0.0",
